@@ -29,7 +29,11 @@ A list of core team members responsible for the code and documentation in this r
 ## Repository Structure
 
 <!-- TODO: Including the repository structure helps viewers quickly understand the project layout. Using the "tree -d" command can be a helpful way to generate this information, but, be sure to update it as the project evolves and changes over time. -->
-<!--TREE START--><!--TREE END-->
+
+```plaintext
+.
+```
+
 
 **{list directories and descriptions}**
 
