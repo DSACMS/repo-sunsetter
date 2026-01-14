@@ -1,3 +1,8 @@
+---
+title: Repository Archival Checklist
+labels: archive
+---
+
 # Repository Archival Checklist
 
 Use this checklist to ensure all necessary tasks are completed before archiving your repository.
