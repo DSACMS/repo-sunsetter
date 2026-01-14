@@ -1,0 +1,87 @@
+name: repo-sunsetter
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  # File an issue with the corresponding archival checklist based on maturity model tier
+  file-archival-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch maturity model tier from code.json
+        run: |
+          # Install jq if not already installed
+          if ! command -v jq &> /dev/null; then
+            sudo apt-get update && sudo apt-get install -y jq
+          fi
+
+          # Validate JSON file
+          if ! jq empty code.json 2>/dev/null; then
+            echo "❌ Invalid JSON file"
+            exit 1
+          fi
+
+          # Extract values from JSON
+          TIER=$(jq -r '.maturityModelTier' code.json)
+          echo "TIER=$TIER" >> $GITHUB_ENV
+          echo "✅ Maturity Model Tier: $TIER"
+
+      - name: Create checklist file based on tier
+        run: |
+          FILE_URL=""
+          DESTINATION_PATH="checklist.md"
+
+          if [ "$TIER" == "0" ] || [ "$TIER" == "1" ]; then
+            FILE_URL="https://raw.githubusercontent.com/natalialuzuriaga/ospo-guide/main/.github/checklist.md"
+          elif [ "$TIER" == "2" ] || [ "$TIER" == "3" ] || [ "$TIER" == "4" ]; then
+            FILE_URL="https://raw.githubusercontent.com/natalialuzuriaga/ospo-guide/main/.github/checklist.md"
+          else
+            echo "❌ Unknown tier: $TIER"
+            exit 1
+          fi
+
+          # Download file
+          echo "📥 Downloading file from $FILE_URL..."
+          wget -q --show-progress -O "$DESTINATION_PATH" "$FILE_URL"
+
+          # Verify download
+          if [ -f "$DESTINATION_PATH" ]; then
+            echo "✅ File downloaded successfully"
+            echo "📊 File size: $(du -h $DESTINATION_PATH | cut -f1)"
+            ls -lh "$DESTINATION_PATH"
+          else
+            echo "❌ Download failed"
+            exit 1
+          fi
+
+      - name: Create archival checklist issue on the repository
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          filename: ./checklist.md
+
+  # Update repository metadata to reflect archival status
+  update-code-json:
+    runs-on: ubuntu-latest
+    name: Update code.json using archival mode
+    steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+        - name: Update code.json using archival mode
+          uses: DSACMS/automated-codejson-generator@main
+          with:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            BRANCH: "main"
+            SKIP_PR: "false"
+            ARCHIVE: "true"
