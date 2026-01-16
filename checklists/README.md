@@ -8,5 +8,4 @@
 ## Tier 2-4
 [COMPREHENSIVE_ARCHIVAL_CHECKLIST.md](./COMPREHENSIVE_ARCHIVAL_CHECKLIST.md) is designed for Tiers 2-4 repositories, which have higher criticality and more active user community with external contributors. This checklist provides a more thorough review of the repository.
 
-
 For more information on the repository archival process, please visit: [https://dsacms.github.io/ospo-guide/outbound/archiving-repositories](https://dsacms.github.io/ospo-guide/outbound/archiving-repositories)
