@@ -55,7 +55,6 @@ In **code.json**:
   - [ ] Marketing and other internal teams should also be notified.
 - [ ] Known users of the project should also be notified.
 
-
 ## Repository Access
 - [ ] Review and audit committer access permissions
 - [ ] Remove access for users who no longer need it
