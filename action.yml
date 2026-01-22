@@ -1,0 +1,35 @@
+name: repo-sunsetter
+description: "A GitHub Action to prepare a repository for archival"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v6
+      with:
+        fetch-depth: 0
+
+    - name: Fetch maturity model tier from code.json
+      id: fetch-tier
+      uses: ./actions/fetch-tier
+      with:
+        code-json-path: "code.json"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Create archival checklist issue
+      id: create-issue
+      uses: ./actions/create-issue
+      with:
+        tier: ${{ steps.fetch-tier.outputs.tier }}
+    
+    - name: Update code.json using archival mode
+      uses: DSACMS/automated-codejson-generator@main
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: "main"
+        SKIP_PR: "false"
+        ARCHIVE: "true"
+    
+    - name: Update README.md with archival notice
+      id: update-readme
+      uses: ./actions/update-readme
