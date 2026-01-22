@@ -17,7 +17,7 @@ runs:
       id: create-issue
       uses: DSACMS/repo-sunsetter/actions/create-issue@DSACMS/nat/mvp
       with:
-        tier: ${{ steps.fetch-tier.outputs.tier }}
+        TIER: ${{ steps.fetch-tier.outputs.tier }}
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
     
     # - name: Update code.json using archival mode

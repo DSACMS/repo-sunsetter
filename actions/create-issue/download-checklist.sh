@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# Get tier from environment variable
+TIER="${TIER:-0}"
+
 FILE_URL=""
-DESTINATION_PATH="checklist.md"
+DESTINATION_PATH="temp_checklist.md"
 
 if [ "$TIER" == "0" ] || [ "$TIER" == "1" ]; then
     FILE_URL="https://raw.githubusercontent.com/DSACMS/repo-sunsetter/main/checklists/BASIC_ARCHIVAL_CHECKLIST.md"
