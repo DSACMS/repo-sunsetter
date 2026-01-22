@@ -29,4 +29,4 @@ runs:
       env:
           GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
       with:
-          filename: ./checklist.md
+          filename: ./temp_checklist.md
