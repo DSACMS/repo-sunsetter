@@ -28,6 +28,6 @@ runs:
         SKIP_PR: "false"
         ARCHIVE: "true"
     
-    # - name: Update README.md with archival notice
-    #   id: update-readme
-    #   uses: DSACMS/repo-sunsetter/actions/update-readme@DSACMS/nat/mvp
+    - name: Update README.md with archival notice
+      id: update-readme
+      uses: DSACMS/repo-sunsetter/actions/update-readme@DSACMS/nat/mvp
