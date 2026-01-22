@@ -1,0 +1,32 @@
+name: Create Archival Checklist Issue
+description: "Creates an archival checklist issue based on the repository's maturity model tier"
+
+inputs:
+  tier:
+    description: "The repository's maturity model tier"
+    required: true
+    default: 0
+
+  GITHUB_TOKEN:
+    description: "GitHub token for authentication and creating issues & PRs"
+    required: true
+
+outputs:
+  issue-number:
+    description: "The created issue number"
+    value: ${{ steps.fetch.outputs.issue-number }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Execute download checklist script
+      id: fetch
+      shell: bash
+      run: ${{ github.action_path }}/download-checklist.sh "${{ inputs.tier }}"
+    
+    - name: Create archival checklist issue on the repository
+      uses: JasonEtco/create-an-issue@v2
+      env:
+          GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+      with:
+          filename: ./checklist.md
