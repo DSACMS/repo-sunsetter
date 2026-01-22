@@ -13,12 +13,12 @@ runs:
       id: fetch-tier
       uses: DSACMS/repo-sunsetter/actions/fetch-tier@DSACMS/nat/mvp
     
-    # - name: Create archival checklist issue
-    #   id: create-issue
-    #   uses: DSACMS/repo-sunsetter/actions/create-issue@DSACMS/nat/mvp
-    #   with:
-    #     tier: ${{ steps.fetch-tier.outputs.tier }}
-    #     GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+    - name: Create archival checklist issue
+      id: create-issue
+      uses: DSACMS/repo-sunsetter/actions/create-issue@DSACMS/nat/mvp
+      with:
+        tier: ${{ steps.fetch-tier.outputs.tier }}
+        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
     
     # - name: Update code.json using archival mode
     #   uses: DSACMS/automated-codejson-generator@main
