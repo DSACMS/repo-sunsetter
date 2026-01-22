@@ -2,7 +2,7 @@ name: Create Archival Checklist Issue
 description: "Creates an archival checklist issue based on the repository's maturity model tier"
 
 inputs:
-  tier:
+  TIER:
     description: "The repository's maturity model tier"
     required: true
     default: 0
@@ -22,7 +22,7 @@ runs:
     - name: Execute download checklist script
       id: fetch
       shell: bash
-      run: ${{ github.action_path }}/download-checklist.sh "${{ inputs.tier }}"
+      run: ${{ github.action_path }}/download-checklist.sh "${{ inputs.TIER }}"
     
     - name: Create archival checklist issue on the repository
       uses: JasonEtco/create-an-issue@v2
