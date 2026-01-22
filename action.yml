@@ -14,13 +14,13 @@ runs:
       uses: ./actions/fetch-tier
       with:
         code-json-path: "code.json"
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Create archival checklist issue
       id: create-issue
       uses: ./actions/create-issue
       with:
         tier: ${{ steps.fetch-tier.outputs.tier }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Update code.json using archival mode
       uses: DSACMS/automated-codejson-generator@main
