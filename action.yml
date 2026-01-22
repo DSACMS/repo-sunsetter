@@ -11,11 +11,11 @@ runs:
   steps:
     - name: Fetch maturity model tier from code.json
       id: fetch-tier
-      uses: ./actions/fetch-tier
+      uses: DSACMS/repo-sunsetter/actions/fetch-tier@DSACMS/nat/mvp
     
     - name: Create archival checklist issue
       id: create-issue
-      uses: ./actions/create-issue
+      uses: DSACMS/repo-sunsetter/actions/create-issue@DSACMS/nat/mvp
       with:
         tier: ${{ steps.fetch-tier.outputs.tier }}
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
@@ -30,4 +30,4 @@ runs:
     
     - name: Update README.md with archival notice
       id: update-readme
-      uses: ./actions/update-readme
+      uses: DSACMS/repo-sunsetter/actions/update-readme@DSACMS/nat/mvp
