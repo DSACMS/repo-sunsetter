@@ -15,6 +15,10 @@ outputs:
 runs:
   using: 'composite'
   steps:
+    - name: Checkout repository
+      uses: actions/checkout@v6
+      with:
+        fetch-depth: 0
     - name: Execute fetch tier script
       id: fetch
       shell: bash
