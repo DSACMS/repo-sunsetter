@@ -1,0 +1,33 @@
+name: Update README.md with archival notice
+description: "Adds an archival notice to the README.md file of the repository"
+
+inputs:
+  GITHUB_TOKEN:
+    description: "GitHub token needed for creating the pull request"
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Execute update readme script
+      id: fetch
+      shell: bash
+      run: ${{ github.action_path }}/update-readme.sh
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v7
+      with:
+        token: ${{ inputs.GITHUB_TOKEN }} #ENV instead?
+        branch: archive-notice-update
+        title: "Documentation: Add Archive Notice to README"
+        body: |
+          ## Description
+          This PR adds an archive notice to the README to inform users that this project is no longer actively maintained.
+              
+          ## Changes
+          - Added archive notice banner to README.md
+          - Includes clear information about repository status
+              
+        labels: archive
+        commit-message: "docs: add archive notice to README"
+        author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>

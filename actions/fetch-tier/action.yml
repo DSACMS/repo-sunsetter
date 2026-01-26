@@ -1,0 +1,21 @@
+name: Fetch Maturity Model Tier
+description: "Extracts maturity model tier from code.json file"
+
+inputs:
+  code-json-path:
+    description: "Path to code.json file"
+    required: false
+    default: "code.json"
+
+outputs:
+  tier:
+    description: The repository's maturity model tier
+    value: ${{ steps.fetch.outputs.tier }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Execute fetch tier script
+      id: fetch
+      shell: bash
+      run: ${{ github.action_path }}/fetch-tier.sh "${{ inputs.code-json-path }}"

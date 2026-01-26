@@ -1,0 +1,35 @@
+name: repo-sunsetter
+description: "A GitHub Action to prepare a repository for archival"
+
+inputs:
+  GITHUB_TOKEN:
+    description: "GitHub token for authentication and creating issues & PRs"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Fetch maturity model tier from code.json
+      id: fetch-tier
+      uses: DSACMS/repo-sunsetter/actions/fetch-tier@main
+    
+    - name: Create archival checklist issue
+      id: create-issue
+      uses: DSACMS/repo-sunsetter/actions/create-issue@main
+      with:
+        TIER: ${{ steps.fetch-tier.outputs.tier }}
+        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+    
+    - name: Update code.json using archival mode
+      uses: DSACMS/automated-codejson-generator@main
+      with:
+        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+        BRANCH: "main"
+        SKIP_PR: "false"
+        ARCHIVE: "true"
+    
+    - name: Update README.md with archival notice
+      id: update-readme
+      uses: DSACMS/repo-sunsetter/actions/update-readme@main
+      with:
+        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
