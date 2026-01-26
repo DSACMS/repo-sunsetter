@@ -32,4 +32,4 @@ runs:
       id: update-readme
       uses: DSACMS/repo-sunsetter/actions/update-readme@DSACMS/nat/mvp
       with:
-        GITHUB_TOKEN: $ {{ inputs.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
