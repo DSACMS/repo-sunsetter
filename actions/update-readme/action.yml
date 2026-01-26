@@ -15,7 +15,7 @@ runs:
       run: ${{ github.action_path }}/update-readme.sh
 
     - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v7.0.9
+      uses: peter-evans/create-pull-request@v7
       with:
         token: ${{ inputs.GITHUB_TOKEN }} #ENV instead?
         branch: archive-notice-update
