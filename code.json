@@ -2,15 +2,15 @@
   "name": "repo-sunsetter",
   "version": "",
   "description": "A GitHub Action to assist organizations with archiving repositories",
-  "longDescription": "",
+  "longDescription": "A GitHub Action that prepares a repository for archival by updating repository metadata, adding an archival notice to the README.md, and filing an issue containing an archival task checklist",
   "permissions": {
     "licenses": [
       {
         "name": "CC0-1.0",
-        "URL": ""
+        "URL": "https://github.com/DSACMS/repo-sunsetter/blob/main/LICENSE"
       }
     ],
-    "usageType": [],
+    "usageType": ["openSource"],
     "exemptionText": ""
   },
   "organization": "Centers for Medicare & Medicaid Services",
@@ -26,8 +26,8 @@
     "forks": 1,
     "clones": 0
   },
-  "platforms": [],
-  "categories": [],
+  "platforms": ["web"],
+  "categories": ["application-development", "inventory-management", "it-management", "project-management"],
   "languages": [
     "Shell"
   ],
@@ -45,17 +45,17 @@
     "dsacms-tier3"
   ],
   "contact": {
-    "email": "",
-    "name": ""
+    "email": "opensource@cms.hhs.gov",
+    "name": "CMS Open Source Program Office"
   },
   "feedbackMechanism": "https://github.com/DSACMS/repo-sunsetter/issues",
   "AIUseCaseID": "0",
   "localisation": false,
-  "userInput": false,
-  "group": "",
-  "projects": [],
+  "userInput": true,
+  "group": "CMS/OA/DSAC",
+  "projects": ["ospo"],
   "systems": [],
-  "subsetInHealthcare": [],
-  "userType": [],
-  "maturityModelTier": 0
+  "subsetInHealthcare": ["operational"],
+  "userType": ["government"],
+  "maturityModelTier": 3
 }
