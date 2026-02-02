@@ -10,13 +10,13 @@ Roles to include, but not limited to: Project Owner, Technical Lead, Developers/
 
 | Role   | Name    | Affiliation    |
 | :----- | :------ | :------------- |
-| Engineer | Natalia Luzuriaga | DSAC |
+| Software Engineer | Natalia Luzuriaga | DSAC |
 | Open Source Lead | Remy DeCausemaker | DSAC |
-
-<!-- TODO: A CODEOWNERS.md file is available in .github to define individuals responsible for specific parts of the codebase. Provide a reference to this file if used:
+| Software Engineer | Sachin Panayil | DSAC |
+| Software Engineer | Isaac Milarsky | DSAC |
+| Software Engineer | Dinne Kopelevich | DSAC |
 
 See [CODEOWNERS.md](.github/CODEOWNERS.md) for a list of those responsible for the code and documentation in this repository.
--->
 
 See [Community Guidelines](#repo-sunsetter-open-source-community-guidelines) on principles and guidelines for participating in this open source project.
 
@@ -26,19 +26,24 @@ The members of repo-sunsetter community are responsible for guiding its developm
 
 ### Maintainers:
 
-- @natalialuzuriaga
+- [@natalialuzuriaga](https://github.com/natalialuzuriaga)
 
 <!-- TODO: List the individuals who are the maintainers. What groups/domains are maintainers a part of? Does your project have domains/areas that are maintained by specific people? List @USERNAMES directly, or any @ALIASES for groups/teams. -->
 
 ### Approvers:
 
-- @natalialuzuriaga
+- [@natalialuzuriaga](https://github.com/natalialuzuriaga)
+- [@decause-gov](https://github.com/decause-gov)
 
 <!-- TODO: Who are the project approvers? List out @USERNAMES where possible so they can be tagged in issues/PRs directly. -->
 
 ### Reviewers:
 
-- @natalialuzuriaga
+- [@natalialuzuriaga](https://github.com/natalialuzuriaga)
+- [@IsaacMilarky](https://github.com/IsaacMilarky)
+- [@sachin-panayil](https://github.com/sachin-panayil)
+- [@DinneK](https://github.com/DinneK)
+- [@decause-gov](https://github.com/decause-gov)
 
 <!-- TODO: Who are the project reviewers? List out @USERNAMES where possible so they can be tagged in issues/PRs directly. -->
 
@@ -49,16 +54,13 @@ The members of repo-sunsetter community are responsible for guiding its developm
 | approver   | approve accepting contributions                | highly experienced and active reviewer + contributor to a sub-project             | COMMUNITY file approver entry and GitHub Triage Team      |
 | maintainer | set direction and priorities for a sub-project | demonstrated responsibility and excellent technical judgement for the sub-project | COMMUNITY file owner entry and GitHub Org Admin Team      |
 
-<!-- TODO: If the repository's release process is outlined in CONTRIBUTING.md, provide a reference to it:
-
 See [CONTRIBUTING.md](CONTRIBUTING.md) for more details on the release process.
--->
 
 ## Contributors
 
 <!-- TODO: A list of CONTRIBUTORS is generated below using contributors.yml located in the workflows directory. In order to automatically update the COMMUNITY.md, you must enter a secret into your Secrets and Variables under Actions within your repository settings. The name of the secret must be PUSH_TO_PROTECTED_BRANCH and the value must be a Personal Access Token with specific permissions. Please follow [this link](https://github.com/CasperWA/push-protected?tab=readme-ov-file#notes-on-token-and-user-permissions) for more information. -->
 
-Total number of contributors: <!--CONTRIBUTOR COUNT START--> <!--CONTRIBUTOR COUNT END-->
+![](https://img.shields.io/github/contributors/DSACMS/repo-sunsetter?style=flat-square&label=Contributor%20Count(incl.%20bots)) 
 
 <!-- readme: contributors -start -->
 <table>
