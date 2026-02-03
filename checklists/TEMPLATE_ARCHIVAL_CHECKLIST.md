@@ -3,14 +3,13 @@ title: Repository Archival Checklist
 labels: archive
 ---
 
-# CMS.gov Repository Archival Checklist
+# Repository Archival Checklist
 
 Use this checklist to ensure all necessary tasks are completed before archiving your repository.
 
 ## Repository Metadata
-In **code.json**:
-- [X] Change status to archival
-- [X] Add **archived** to **tags**
+In project metadata file (e.g. code.json, codemeta, publiccode.yaml):
+- [X] Note archival status
 - [ ] Review all fields to ensure project metadata is correct and accurate.
 
 ## Documentation
