@@ -1,45 +1,96 @@
 # repo-sunsetter
 
-A suite of tools to assist organizations with archiving repositories
+A GitHub Action that prepares a repository for archival by automating documentation updates and providing an archival review checklist.
 
 ## About the Project
 
-**{project statement}**
+repo-sunsetter is a comprehensive GitHub action that prepares a repository for archival. It performs the following steps to "sunset" a repository:
+1. Adds an archival notice to the README.md to inform users about the state of the repository
+2. Update project metadata by marking project as archived in code.json
+3. Files an issue containing an [archival checklist](./checklists) based on the repository's maturity model tier. The checklist contains various tasks reviewing the contents of the repository.
 
-<!---
+This project is based on our [archiving repositories guide](https://dsacms.github.io/ospo-guide/outbound/archiving-repositories/).
+
+### Quick Start
+
+Create a new GitHub workflow yml file or add to an existing GitHub Actions workflow. 
+```
+name: Archive repository
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  run-repo-sunsetter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Run repo-sunsetter
+        id: archive
+        uses: DSACMS/repo-sunsetter@main
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+### How It Works
+
+#### Filing an issue with archival checklist
+repo-sunsetter tailors the archival process based on your repository's tier (defined in code.json):
+
+Tier 0-1: Lower-activity repositories receive a [basic checklist](./checklists/BASIC_ARCHIVAL_CHECKLIST.md) with essential archival tasks
+Tier 2-4: Higher-criticality repositories with active communities receive a [comprehensive checklist](./checklists/COMPREHENSIVE_ARCHIVAL_CHECKLIST.md)
+_For more details on repository maturity model tiers, visit [repo-scaffolder](https://dsacms.github.io/repo-scaffolder/#maturity-model-framework)._
+
+This functionality is located in the [actions](./actions/) directory: [actions/fetch-tier](./actions/fetch-tier) and [actions/create-issue](./actions/create-issue).
+
+#### Updating project metadata
+To mark the project as archived, [automated-codejson-generator](https://github.com/DSACMS/automated-codejson-generator) ARCHIVE mode is used.
+
+#### Updating the repository's README.md
+This functionality is located in the [actions/update-readme](./actions/update-readme) directory.
+
 ### Project Vision
-**{project vision}** -->
+To streamline the end-of-life archival process in the repository life cycle by creating a GitHub Action that defines and automates archival tasks, reducing manual effort of sunsetting a repository. 
 
-<!--
 ### Project Mission
-**{project mission}** -->
+To provide a clear and straightforward process for development teams to sunset repositories, ensuring a thorough review of its contents as well as proper communication to users.
 
-<!--
 ### Agency Mission
-TODO: Good to include since this is an agency-led project -->
+This project supports the agency's broader source code stewardship initiative, focused on bringing all repositories up to open source and repository hygiene standards.
 
-<!--
 ### Team Mission
-TODO: Good to include since this is an agency-led project -->
+Our team is committed to building tools that make open source development complemented with repository hygiene easier for federal development teams, focusing on automation and accuracy to reduce manual overhead.
 
 ## Core Team
 
 A list of core team members responsible for the code and documentation in this repository can be found in [COMMUNITY.md](COMMUNITY.md).
 
 ## Repository Structure
-
-<!-- TODO: Including the repository structure helps viewers quickly understand the project layout. Using the "tree -d" command can be a helpful way to generate this information, but, be sure to update it as the project evolves and changes over time. -->
-
-```plaintext
 .
-```
+├── action.yml                          # Main composite action definition
+├── actions/                            # Sub-actions
+│   ├── create-issue/                   # Creates archival checklist issue
+│   ├── fetch-tier/                     # Determines repository maturity tier
+│   └── update-readme/                  # Adds archival notice to README
+├── checklists/                         # Archival task checklists
+│   ├── BASIC_ARCHIVAL_CHECKLIST.md     # Tier 0-1 repositories
+│   └── COMPREHENSIVE_ARCHIVAL_CHECKLIST.md  # Tier 2-4 repositories
 
+Visit the [checklists/] directory to view the archival checklists.
 
-**{list directories and descriptions}**
-
-<!-- TODO: Add a 'table of contents" for your documentation. Tier 0/1 projects with simple README.md files without many sections may or may not need this, but it is still extremely helpful to provide "bookmark" or "anchor" links to specific sections of your file to be referenced in tickets, docs, or other communication channels. -->
-
-**{list of .md at top directory and descriptions}**
+*Documentation Index*
+- CONTRIBUTING.md - Guidelines for contributing to the project
+- COMMUNITY.md & CODEOWNERS.md - Core team information and guidelines for community participation
+- GOVERNANCE.md - Project governance information
+- SECURITY.md - Security and vulnerability disclosure policies
+- LICENSE - CC0 1.0 Universal public domain dedication
 
 # Development and Software Delivery Lifecycle
 
@@ -47,19 +98,19 @@ The following guide is for members of the project team who have access to the re
 
 ## Local Development
 
-<!--- TODO - with example below:
-This project is monorepo with several apps. Please see the [api](./api/README.md) and [frontend](./frontend/README.md) READMEs for information on spinning up those projects locally. Also see the project [documentation](./documentation) for more info.
--->
+Since this project consists of shell scripts and GitHub Actions, there is no build process. To test changes:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes to the shell scripts or action definitions
+4. Test by referencing your fork in a workflow: uses: your-fork/repo-sunsetter@your-branch
 
 ## Coding Style and Linters
 
-<!-- TODO - Add the repo's linting and code style guidelines -->
-
-Each application has its own linting and testing guidelines. Lint and code tests are run on each commit, so linters and tests should be run locally before committing.
+TBD
 
 ## Branching Model
 
-<!--- TODO - with example below:
 This project follows [trunk-based development](https://trunkbaseddevelopment.com/), which means:
 
 * Make small changes in [short-lived feature branches](https://trunkbaseddevelopment.com/short-lived-feature-branches/) and merge to `main` frequently.
@@ -71,7 +122,6 @@ This project follows [trunk-based development](https://trunkbaseddevelopment.com
 This project uses **continuous deployment** using [Github Actions](https://github.com/features/actions) which is configured in the [./github/workflows](.github/workflows) directory.
 
 Pull-requests are merged to `main` and the changes are immediately deployed to the development environment. Releases are created to push changes to production.
--->
 
 ## Contributing
 
@@ -96,7 +146,7 @@ Information about how the repo-sunsetter community is governed may be found in [
 
 ## Feedback
 
-If you have ideas for how we can improve or add to our capacity building efforts and methods for welcoming people into our community, please let us know at **{contact email}**. If you would like to comment on the tool itself, please let us know by filing an **issue on our GitHub repository.**
+If you have ideas for how we can improve or add to our capacity building efforts and methods for welcoming people into our community, please let us know at opensource@cms.hhs.gov. If you would like to comment on the tool itself, please let us know by filing an **issue on our GitHub repository.**
 
 <!--
 ## Glossary
