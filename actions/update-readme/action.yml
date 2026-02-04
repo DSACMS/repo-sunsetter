@@ -8,8 +8,7 @@ inputs:
   ARCHIVE_NOTICE_TEXT:
     description: "Custom text to include in the archival notice (optional)"
     required: false
-    default: |
-          > [!WARNING]\n> This project is now archived and no longer actively maintained. It has been archived to retain its contents for reference. Feel free to explore and fork the repository, but please note that updates or support will not be provided.
+    default: "This project is now archived and no longer actively maintained. It has been archived to retain its contents for reference. Feel free to explore and fork the repository, but please note that updates or support will not be provided."
 
 
 runs:

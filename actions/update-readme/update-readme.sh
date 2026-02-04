@@ -1,6 +1,8 @@
 #!/bin/bash
 
-awk -v notice="$ARCHIVE_NOTICE_TEXT" '
+ARCHIVE_TEXT="> [!WARNING]\n>$ARCHIVE_NOTICE_TEXT"
+
+awk -v notice="$ARCHIVE_TEXT" '
     /^# / && !found {
     print $0
     print notice
