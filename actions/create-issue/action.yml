@@ -2,14 +2,19 @@ name: Create Archival Checklist Issue
 description: "Creates an archival checklist issue based on the repository's maturity model tier"
 
 inputs:
-  TIER:
-    description: "The repository's maturity model tier"
-    required: true
-    default: 0
-
   GITHUB_TOKEN:
     description: "GitHub token needed for creating the issue"
     required: true
+  
+  USE_MATURITY_MODEL_TIERS:
+    description: "Flag to determine if maturity model tiers should be used for issue generation"
+    required: true
+    default: "false"
+  
+  CHECKLIST_LINK:
+    description: "A link to the archival checklist to be included in the issue body. The checklist must be in the form of a .md file. The link must serve the file as a static raw text file (i.e. uses raw.githubusercontent.com). Only used if USE_MATURITY_MODEL_TIERS is false"
+    required: false
+    default: "https://raw.githubusercontent.com/DSACMS/repo-sunsetter/main/checklists/TEMPLATE_ARCHIVAL_CHECKLIST.md"
 
 outputs:
   issue-number:
@@ -19,10 +24,24 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    - name: Execute download checklist script
-      id: fetch
+    - name: Fetch maturity model tier from code.json
+      if: ${{ inputs.USE_MATURITY_MODEL_TIERS == 'true'}}
+      id: fetch-tier
+      uses: DSACMS/repo-sunsetter/actions/fetch-tier@DSACMS/nat/gen-action
+
+    - name: Execute download checklist script using maturity model tier
+      if: ${{ inputs.USE_MATURITY_MODEL_TIERS == 'true'}}
       shell: bash
-      run: ${{ github.action_path }}/download-checklist.sh "${{ inputs.TIER }}"
+      run: ${{ github.action_path }}/download-checklist.sh
+      env:
+        TIER: ${{ steps.fetch-tier.outputs.tier }}
+
+    - name: Execute download checklist script if not using maturity model tiers
+      if: ${{ inputs.USE_MATURITY_MODEL_TIERS == 'false'}}
+      shell: bash
+      run: ${{ github.action_path }}/download-checklist.sh "${{ inputs.CHECKLIST_LINK }}"
+      env:
+        TIER: "-1"
     
     - name: Create archival checklist issue on the repository
       uses: JasonEtco/create-an-issue@v2
