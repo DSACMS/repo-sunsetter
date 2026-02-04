@@ -9,6 +9,9 @@ inputs:
     description: "Metadata file in the repository (e.g. code.json, codemeta, publiccode.yml)"
     required: false
     default: "code.json"
+  ARCHIVE_NOTICE_TEXT:
+    description: "Custom text to include in the archival notice (optional)"
+    required: false
 
 runs:
   using: "composite"
@@ -37,3 +40,4 @@ runs:
       uses: DSACMS/repo-sunsetter/actions/update-readme@DSACMS/nat/gen-action
       with:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+        ARCHIVE_NOTICE_TEXT: ${{ inputs.ARCHIVE_NOTICE_TEXT }}
