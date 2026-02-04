@@ -25,7 +25,7 @@ runs:
     
     - name: Update code.json using archival mode
       if: ${{ inputs.METADATA_FILE_TYPE == 'code.json' }} 
-      uses: DSACMS/automated-codejson-generator@DSACMS/nat/gen-action
+      uses: DSACMS/automated-codejson-generator@main
       with:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
         BRANCH: "main"
