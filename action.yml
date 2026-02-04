@@ -5,23 +5,27 @@ inputs:
   GITHUB_TOKEN:
     description: "GitHub token for authentication and creating issues & PRs"
     required: true
+  METADATA_FILE_TYPE:
+    description: "Metadata file in the repository (e.g. code.json, codemeta, publiccode.yml)"
+    required: false
+    default: "code.json"
 
 runs:
   using: "composite"
   steps:
     - name: Fetch maturity model tier from code.json
       id: fetch-tier
-      uses: DSACMS/repo-sunsetter/actions/fetch-tier@main
+      uses: DSACMS/repo-sunsetter/actions/fetch-tier@DSACMS/nat/gen-action
     
     - name: Create archival checklist issue
       id: create-issue
-      uses: DSACMS/repo-sunsetter/actions/create-issue@main
+      uses: DSACMS/repo-sunsetter/actions/create-issue@DSACMS/nat/gen-action
       with:
-        TIER: ${{ steps.fetch-tier.outputs.tier }}
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
     
     - name: Update code.json using archival mode
-      uses: DSACMS/automated-codejson-generator@main
+      if: ${{ inputs.METADATA_FILE_TYPE == 'code.json' }} 
+      uses: DSACMS/automated-codejson-generator@DSACMS/nat/gen-action
       with:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
         BRANCH: "main"
@@ -30,6 +34,6 @@ runs:
     
     - name: Update README.md with archival notice
       id: update-readme
-      uses: DSACMS/repo-sunsetter/actions/update-readme@main
+      uses: DSACMS/repo-sunsetter/actions/update-readme@DSACMS/nat/gen-action
       with:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
