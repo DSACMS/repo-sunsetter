@@ -49,3 +49,10 @@ runs:
           GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
       with:
           filename: ./temp_checklist.md
+    
+    - name: Cleanup temporary checklist file
+      shell: bash
+      run: |
+        if [ -f ./temp_checklist.md ]; then
+        rm -f ./temp_checklist.md
+        fi
