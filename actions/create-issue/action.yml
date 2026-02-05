@@ -14,7 +14,6 @@ inputs:
   CHECKLIST_LINK:
     description: "A link to the archival checklist to be included in the issue body. The checklist must be in the form of a .md file. The link must serve the file as a static raw text file (i.e. uses raw.githubusercontent.com). Only used if USE_MATURITY_MODEL_TIERS is false"
     required: false
-    default: "https://raw.githubusercontent.com/DSACMS/repo-sunsetter/main/checklists/TEMPLATE_ARCHIVAL_CHECKLIST.md"
 
 outputs:
   issue-number:
