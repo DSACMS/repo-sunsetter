@@ -4,6 +4,7 @@
 TIER="${TIER}"
 
 echo "🔍 Downloading checklist for tier: $TIER"
+echo "Test test test${1}"
 
 FILE_URL=""
 DESTINATION_PATH="temp_checklist.md"
