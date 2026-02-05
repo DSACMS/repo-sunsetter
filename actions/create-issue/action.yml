@@ -39,7 +39,7 @@ runs:
     - name: Execute download checklist script if not using maturity model tiers
       if: ${{ inputs.USE_MATURITY_MODEL_TIERS == 'false'}}
       shell: bash
-      run: ${{ github.action_path }}/download-checklist.sh "${{ inputs.CHECKLIST_LINK }}"
+      run: ${{ github.action_path }}/download-checklist.sh ${{ inputs.CHECKLIST_LINK }}
       env:
         TIER: "-1"
     
