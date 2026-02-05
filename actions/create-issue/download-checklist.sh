@@ -3,6 +3,8 @@
 # Get tier from environment variable
 TIER="${TIER}"
 
+echo "🔍 Downloading checklist for tier: $TIER"
+
 FILE_URL=""
 DESTINATION_PATH="temp_checklist.md"
 
