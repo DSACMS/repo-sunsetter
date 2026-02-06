@@ -73,6 +73,7 @@ Our team is committed to building tools that make open source development comple
 A list of core team members responsible for the code and documentation in this repository can be found in [COMMUNITY.md](COMMUNITY.md).
 
 ## Repository Structure
+<pre>
 .
 ├── action.yml                          # Main composite action definition
 ├── actions/                            # Sub-actions
@@ -82,6 +83,7 @@ A list of core team members responsible for the code and documentation in this r
 ├── checklists/                         # Archival task checklists
 │   ├── BASIC_ARCHIVAL_CHECKLIST.md     # Tier 0-1 repositories
 │   └── COMPREHENSIVE_ARCHIVAL_CHECKLIST.md  # Tier 2-4 repositories
+</pre>
 
 Visit the [checklists/] directory to view the archival checklists.
 
