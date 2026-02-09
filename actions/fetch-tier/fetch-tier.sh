@@ -30,5 +30,5 @@ if [ "$TIER" == "null" ] || [ "$TIER" == "unknown" ]; then
   exit 1
 fi
 
-echo "TIER=$TIER" >> $GITHUB_ENV
+echo "TIER=$TIER" >> $GITHUB_OUTPUT
 echo "✅ Maturity Model Tier: $TIER"

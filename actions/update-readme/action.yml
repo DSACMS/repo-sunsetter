@@ -5,6 +5,10 @@ inputs:
   GITHUB_TOKEN:
     description: "GitHub token needed for creating the pull request"
     required: true
+  ARCHIVE_NOTICE_TEXT:
+    description: "Custom text to include in the archival notice (optional)"
+    required: false
+    default: "This project is now archived and no longer actively maintained. It has been archived to retain its contents for reference. Feel free to explore and fork the repository, but please note that updates or support will not be provided."
 
 runs:
   using: 'composite'
@@ -13,6 +17,8 @@ runs:
       id: fetch
       shell: bash
       run: ${{ github.action_path }}/update-readme.sh
+      env:
+        ARCHIVE_NOTICE_TEXT: ${{ inputs.ARCHIVE_NOTICE_TEXT }}
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v7
@@ -27,7 +33,6 @@ runs:
           ## Changes
           - Added archive notice banner to README.md
           - Includes clear information about repository status
-              
         labels: archive
         commit-message: "docs: add archive notice to README"
         author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
