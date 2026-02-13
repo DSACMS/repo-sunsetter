@@ -1,0 +1,61 @@
+{
+  "name": "repo-sunsetter",
+  "version": "",
+  "description": "A GitHub Action to assist organizations with archiving repositories",
+  "longDescription": "A GitHub Action that prepares a repository for archival by updating repository metadata, adding an archival notice to the README.md, and filing an issue containing an archival task checklist",
+  "permissions": {
+    "licenses": [
+      {
+        "name": "CC0-1.0",
+        "URL": "https://github.com/DSACMS/repo-sunsetter/blob/main/LICENSE"
+      }
+    ],
+    "usageType": ["openSource"],
+    "exemptionText": ""
+  },
+  "organization": "Centers for Medicare & Medicaid Services",
+  "repositoryURL": "https://github.com/DSACMS/repo-sunsetter",
+  "repositoryVisibility": "public",
+  "homepageURL": "",
+  "downloadURL": "",
+  "disclaimerURL": "",
+  "disclaimerText": "",
+  "vcs": "git",
+  "laborHours": 2967,
+  "reuseFrequency": {
+    "forks": 1,
+    "clones": 0
+  },
+  "platforms": ["web"],
+  "categories": ["application-development", "inventory-management", "it-management", "project-management"],
+  "languages": [
+    "Shell"
+  ],
+  "contractNumber": [],
+  "SBOM": "https://github.com/DSACMS/repo-sunsetter/network/dependencies",
+  "relatedCode": [],
+  "reusedCode": [],
+  "partners": [],
+  "date": {
+    "created": "2026-01-13T20:59:18Z",
+    "lastModified": "2026-01-26T21:47:02Z",
+    "metadataLastUpdated": "2026-01-28T16:27:46.636Z"
+  },
+  "tags": [
+    "dsacms-tier3"
+  ],
+  "contact": {
+    "email": "opensource@cms.hhs.gov",
+    "name": "CMS Open Source Program Office"
+  },
+  "feedbackMechanism": "https://github.com/DSACMS/repo-sunsetter/issues",
+  "AIUseCaseID": "0",
+  "localisation": false,
+  "userInput": true,
+  "group": "CMS/OA/DSAC",
+  "projects": ["ospo"],
+  "systems": [],
+  "subsetInHealthcare": ["operational"],
+  "userType": ["government"],
+  "maturityModelTier": 3
+}
