@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ARCHIVE_TEXT="> [!WARNING]\n>$ARCHIVE_NOTICE_TEXT"
+ARCHIVE_TEXT="> [!WARNING]\n> $ARCHIVE_NOTICE_TEXT\n"
 
 awk -v notice="$ARCHIVE_TEXT" '
     /^# / && !found {
