@@ -11,7 +11,7 @@ repo-sunsetter is a comprehensive GitHub action that prepares a repository for a
 
 This project is based on our [archiving repositories guide](https://dsacms.github.io/ospo-guide/outbound/archiving-repositories/).
 
-### Quick Start
+### Usage
 
 Create a new GitHub workflow yml file or add to an existing GitHub Actions workflow. 
 ```
@@ -55,6 +55,23 @@ To mark the project as archived, [automated-codejson-generator](https://github.c
 
 #### Updating the repository's README.md
 This functionality is located in the [actions/update-readme](./actions/update-readme) directory.
+
+### Inputs
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| `USE_MATURITY_MODEL_TIERS` | Indicates if maturity model tiers should be used for issue generation" | required | `false` |
+| `CHECKLIST_LINK` | A link to the archival checklist to be included in the issue body. The checklist must be in the form of a .md file. The link must serve the file as a static raw text file (i.e. uses raw.githubusercontent.com) since it will be downloaded using wget. Only used if `USE_MATURITY_MODEL_TIERS` is false | optional |`https://raw.githubusercontent.com/DSACMS/repo-sunsetter/main/checklists/TEMPLATE_ARCHIVAL_CHECKLIST.md` |
+| `METADATA_FILE` | Repository metadata file in use. If code.json, then runs automated-codejson-generator. | optional | `code.json` |
+| `ARCHIVE_NOTICE_TEXT` | Add own custom archive notice text, placed within a markdown warning banner. | optional | "This project is now archived and no longer actively maintained. It has been archived to retain its contents for reference. Feel free to explore and fork the repository, but please note that updates or support will not be provided." |
+
+#### Token
+A `GITHUB_TOKEN` is needed for this action for writing issues and pull requests. Set it as the permissions below:
+```
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+```
 
 ### Project Vision
 To streamline the end-of-life archival process in the repository life cycle by creating a GitHub Action that defines and automates archival tasks, reducing manual effort of sunsetting a repository. 

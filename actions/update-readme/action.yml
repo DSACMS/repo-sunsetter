@@ -5,7 +5,11 @@ inputs:
   GITHUB_TOKEN:
     description: "GitHub token needed for creating the pull request"
     required: true
-
+    
+  ARCHIVE_NOTICE_TEXT:
+    description: "Custom text to include in the archival notice (optional)"
+    required: false
+    
 runs:
   using: 'composite'
   steps:
@@ -13,6 +17,8 @@ runs:
       id: fetch
       shell: bash
       run: ${{ github.action_path }}/update-readme.sh
+      env:
+        ARCHIVE_NOTICE_TEXT: ${{ inputs.ARCHIVE_NOTICE_TEXT }}
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v7
@@ -27,7 +33,6 @@ runs:
           ## Changes
           - Added archive notice banner to README.md
           - Includes clear information about repository status
-              
         labels: archive
         commit-message: "docs: add archive notice to README"
         author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
