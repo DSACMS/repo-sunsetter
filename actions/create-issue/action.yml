@@ -26,7 +26,7 @@ runs:
     - name: Fetch maturity model tier from code.json
       if: ${{ inputs.USE_MATURITY_MODEL_TIERS == 'true'}}
       id: fetch-tier
-      uses: DSACMS/repo-sunsetter/actions/fetch-tier@DSACMS/nat/gen-action
+      uses: DSACMS/repo-sunsetter/actions/fetch-tier@main
 
     - name: Execute download checklist script using maturity model tier
       if: ${{ inputs.USE_MATURITY_MODEL_TIERS == 'true'}}
