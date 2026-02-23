@@ -73,6 +73,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for more details on the release process.
                     <sub><b>Natalia Luzuriaga</b></sub>
                 </a>
             </td>
+            <td align="center">
+                <a href="https://github.com/decause-gov">
+                    <img src="https://avatars.githubusercontent.com/u/107957201?v=4" width="100;" alt="decause-gov"/>
+                    <br />
+                    <sub><b>decause-gov</b></sub>
+                </a>
+            </td>
 		</tr>
 	<tbody>
 </table>
