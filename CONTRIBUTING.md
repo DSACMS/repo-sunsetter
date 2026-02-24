@@ -44,8 +44,20 @@ We follow the [GitHub Flow Workflow](https://guides.github.com/introduction/flow
 
 ### Testing Conventions
 
-<!--- TODO: Discuss where tests can be found, how they are run, and what kind of tests/coverage strategy and goals the project has. -->
-TBD
+This repository uses shell unit tests and linting for quality checks.
+
+- Unit tests are located in `tests/unit/` and use [Bats](https://github.com/bats-core/bats-core).
+- Shell script linting is done with [ShellCheck](https://www.shellcheck.net/).
+
+To run tests locally:
+
+```bash
+brew install bats-core shellcheck jq
+bats tests/unit
+find actions -name "*.sh" -print0 | xargs -0 shellcheck
+```
+
+Pull requests should include updated or new tests for changes in shell scripts.
 
 ### Coding Style and Linters
 
