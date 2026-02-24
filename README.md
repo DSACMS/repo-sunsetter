@@ -9,7 +9,7 @@ repo-sunsetter is a comprehensive GitHub action that prepares a repository for a
 2. Update project metadata by marking project as archived in code.json
 3. Files an issue containing an [archival checklist](./checklists) based on the repository's maturity model tier. The checklist contains various tasks reviewing the contents of the repository.
 
-This project is based on our [archiving repositories guide](https://dsacms.github.io/ospo-guide/outbound/archiving-repositories/).
+This project is based on our [archiving repositories guide](https://dsacms.github.io/ospo-guide/outbound/archiving-repositories/) and the [CHAOSS Practitioner Guide for Sunsetting Open Source Projects](https://chaoss.community/practitioner-guide-sunset/).
 
 ### Usage
 
@@ -42,27 +42,36 @@ jobs:
 ### How It Works
 
 #### Filing an issue with archival checklist
-repo-sunsetter tailors the archival process based on your repository's tier (defined in code.json):
+repo-sunsetter tailors the archival process based on your repository's maturity model tier (defined in code.json):
 
 Tier 0-1: Lower-activity repositories receive a [basic checklist](./checklists/BASIC_ARCHIVAL_CHECKLIST.md) with essential archival tasks
 Tier 2-4: Higher-criticality repositories with active communities receive a [comprehensive checklist](./checklists/COMPREHENSIVE_ARCHIVAL_CHECKLIST.md)
+
 _For more details on repository maturity model tiers, visit [repo-scaffolder](https://dsacms.github.io/repo-scaffolder/#maturity-model-framework)._
+
+This action also supports repositories that do not follow our maturity model framework - just set the `USE_MATURITY_MODEL_TIERS` parameter as `false`.
 
 This functionality is located in the [actions](./actions/) directory: [actions/fetch-tier](./actions/fetch-tier) and [actions/create-issue](./actions/create-issue).
 
 #### Updating project metadata
-To mark the project as archived, [automated-codejson-generator](https://github.com/DSACMS/automated-codejson-generator) ARCHIVE mode is used.
+For projects that have a code.json file, [automated-codejson-generator](https://github.com/DSACMS/automated-codejson-generator) ARCHIVE mode is used to mark the project as archived.
+
+We plan to support other metadata files such as publiccode.yml and codemeta in the future.
 
 #### Updating the repository's README.md
-This functionality is located in the [actions/update-readme](./actions/update-readme) directory.
+The action adds an archival notice in the form of a warning banner in the repository's README.md. This text can be customized through the `ARCHIVE_NOTICE_TEXT` parameter.
+
+![Archival Notice](./assets/archival_notice.png)
+
+This functionality is located in the [actions/update-readme](./actions/update-readme) directory. 
 
 ### Inputs
-| Name | Description | Type | Default |
-| --- | --- | --- | --- |
-| `USE_MATURITY_MODEL_TIERS` | Indicates if maturity model tiers should be used for issue generation" | required | `false` |
-| `CHECKLIST_LINK` | A link to the archival checklist to be included in the issue body. The checklist must be in the form of a .md file. The link must serve the file as a static raw text file (i.e. uses raw.githubusercontent.com) since it will be downloaded using wget. Only used if `USE_MATURITY_MODEL_TIERS` is false | optional |`https://raw.githubusercontent.com/DSACMS/repo-sunsetter/main/checklists/TEMPLATE_ARCHIVAL_CHECKLIST.md` |
-| `METADATA_FILE` | Repository metadata file in use. If code.json, then runs automated-codejson-generator. | optional | `code.json` |
-| `ARCHIVE_NOTICE_TEXT` | Add own custom archive notice text, placed within a markdown warning banner. | optional | "This project is now archived and no longer actively maintained. It has been archived to retain its contents for reference. Feel free to explore and fork the repository, but please note that updates or support will not be provided." |
+| Name | Description | Type | Values |  Default |
+| --- | --- | --- | --- | --- |
+| `USE_MATURITY_MODEL_TIERS` | Indicates if maturity model tiers should be used for issue generation" | required | boolean | `false` |
+| `CHECKLIST_LINK` | A link to the archival checklist to be included in the issue body. The checklist must be in the form of a .md file. The link must serve the file as a static raw text file (i.e. uses raw.githubusercontent.com) since it will be downloaded using wget. Only used if `USE_MATURITY_MODEL_TIERS` is false | optional | link | `https://raw.githubusercontent.com/DSACMS/repo-sunsetter/main/checklists/TEMPLATE_ARCHIVAL_CHECKLIST.md` |
+| `METADATA_FILE` | Repository metadata file in use. If code.json, then runs automated-codejson-generator. | optional | `"code.json"` `"none"` | `"code.json"` |
+| `ARCHIVE_NOTICE_TEXT` | Add own custom archive notice text, placed within a markdown warning banner. | optional | string | "This project is now archived and no longer actively maintained. It has been archived to retain its contents for reference. Feel free to explore and fork the repository, but please note that updates or support will not be provided." |
 
 #### Token
 A `GITHUB_TOKEN` is needed for this action for writing issues and pull requests. Set it as the permissions below:
@@ -102,14 +111,14 @@ A list of core team members responsible for the code and documentation in this r
 │   └── COMPREHENSIVE_ARCHIVAL_CHECKLIST.md  # Tier 2-4 repositories
 </pre>
 
-Visit the [checklists/] directory to view the archival checklists.
+Visit the [checklists/](./checklists/) directory to view the archival checklists.
 
 *Documentation Index*
-- CONTRIBUTING.md - Guidelines for contributing to the project
-- COMMUNITY.md & CODEOWNERS.md - Core team information and guidelines for community participation
-- GOVERNANCE.md - Project governance information
-- SECURITY.md - Security and vulnerability disclosure policies
-- LICENSE - CC0 1.0 Universal public domain dedication
+- [CONTRIBUTING.md](./CONTRIBUTING.md) - Guidelines for contributing to the project
+- [COMMUNITY.md](./COMMUNITY.md) & [CODEOWNERS.md](./.github/CODEOWNERS.md) - Core team information and guidelines for community participation
+- [GOVERNANCE.md](./GOVERNANCE.md) - Project governance information
+- [SECURITY.md](./SECURITY.md) - Security and vulnerability disclosure policies
+- [LICENSE](./LICENSE) - CC0 1.0 Universal public domain dedication
 
 # Development and Software Delivery Lifecycle
 
@@ -165,7 +174,7 @@ Information about how the repo-sunsetter community is governed may be found in [
 
 ## Feedback
 
-If you have ideas for how we can improve or add to our capacity building efforts and methods for welcoming people into our community, please let us know at opensource@cms.hhs.gov. If you would like to comment on the tool itself, please let us know by filing an **issue on our GitHub repository.**
+If you have ideas for how we can improve or add to our capacity building efforts and methods for welcoming people into our community, please let us know at opensource@cms.hhs.gov. If you would like to comment on the tool itself, please let us know by filing an [issue on our GitHub repository](https://github.com/DSACMS/repo-sunsetter/issues).
 
 <!--
 ## Glossary
