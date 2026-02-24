@@ -30,15 +30,19 @@ outputs:
   archival_checklist_issue_number:
     description: "The created issue number"
     value: ${{ steps.create-issue.outputs.issue_number }}
+
   archival_checklist_issue_url:
     description: "The URL of the created issue"
     value: ${{ steps.create-issue.outputs.issue_url }}
+
   metadata_update_pull_request_url:
     description: "The URL of the pull request for the metadata file update"
     value: ${{ steps.update-metadata.outputs.pr_url }}
+
   readme_pull_request_number:
     description: "The pull request number for the README update"
     value: ${{ steps.update-readme.outputs.pull_request_number }}
+    
   readme_pull_request_url:
     description: "The URL of the pull request for the README update"
     value: ${{ steps.update-readme.outputs.pull_request_url }}

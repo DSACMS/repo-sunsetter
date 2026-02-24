@@ -73,6 +73,17 @@ permissions:
   issues: write
 ```
 
+### Outputs
+| Name | Description |
+| --- | --- |
+| `archival_checklist_issue_number` | The created issue number |
+| `archival_checklist_issue_url` | The URL of the created issue |
+| `metadata_update_pull_request_url` | The URL of the pull request for the metadata file update, only available if uses [automated-codejson-generator](https://github.com/DSACMS/automated-codejson-generator) to update code.json |
+| `readme_pull_request_number` | The pull request number for the README update |
+| `readme_pull_request_url` | The URL of the pull request for the README update |
+
+"All outputs are displayed in the workflow run logs under the "🌅 Sunset Summary 🌅" step."
+
 ### Project Vision
 To streamline the end-of-life archival process in the repository life cycle by creating a GitHub Action that defines and automates archival tasks, reducing manual effort of sunsetting a repository. 
 
