@@ -26,11 +26,18 @@ inputs:
     required: false
     default: "This project is now archived and no longer actively maintained. It has been archived to retain its contents for reference. Feel free to explore and fork the repository, but please note that updates or support will not be provided."
 
+outputs:
+  readme_pull_request_number:
+    description: "The pull request number"
+    value: ${{ steps.update-readme.outputs.pull_request_number }}
+  readme_pull_request_url:
+    description: "The URL of the pull request"
+    value: ${{ steps.update-readme.outputs.pull_request_url }}
 
 runs:
   using: "composite"
   steps:
-    
+  
     - name: Create archival checklist issue
       id: create-issue
       uses: DSACMS/repo-sunsetter/actions/create-issue@main
@@ -54,3 +61,8 @@ runs:
       with:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
         ARCHIVE_NOTICE_TEXT: ${{ inputs.ARCHIVE_NOTICE_TEXT }}
+    
+    - name: Output results
+      shell: bash
+      run: |
+        echo "README update pull request created: #${{ steps.update-readme.outputs.readme_pull_request_number }} - ${{ steps.update-readme.outputs.readme_pull_request_url }}"
