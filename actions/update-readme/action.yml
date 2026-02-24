@@ -49,5 +49,5 @@ runs:
     - name: Output results
       shell: bash
       run: |
-        echo "Archive notice to README has been added successfully! See PR below:"
+        echo "✅ Archive notice to README has been added successfully! See PR below:"
         echo "PR #${{ steps.create-readme-pr.outputs.pull-request-number }} - ${{ steps.create-readme-pr.outputs.pull-request-url }}"

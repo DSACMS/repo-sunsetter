@@ -16,9 +16,12 @@ inputs:
     required: false
 
 outputs:
-  issue-number:
+  issue_number:
     description: "The created issue number"
-    value: ${{ steps.fetch.outputs.issue-number }}
+    value: ${{ steps.create-issue.outputs.number }}
+  issue_url:
+    description: "The URL of the created issue"
+    value: ${{ steps.create-issue.outputs.url }}
 
 runs:
   using: 'composite'
@@ -43,6 +46,7 @@ runs:
         TIER: "-1"
     
     - name: Create archival checklist issue on the repository
+      id: create-issue
       uses: JasonEtco/create-an-issue@v2
       env:
           GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
@@ -55,3 +59,9 @@ runs:
         if [ -f ./temp_checklist.md ]; then
         rm -f ./temp_checklist.md
         fi
+
+    - name: Output results
+      shell: bash
+      run: |
+        echo "✅ Archival checklist issue has been created successfully! See details below:"
+        echo "Issue #${{ steps.create-issue.outputs.number }} - ${{ steps.create-issue.outputs.url }}"
