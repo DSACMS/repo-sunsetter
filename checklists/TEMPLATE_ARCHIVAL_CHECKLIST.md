@@ -8,7 +8,7 @@ labels: archive
 Use this checklist to ensure all necessary tasks are completed before archiving your repository.
 
 ## Repository Metadata
-In project metadata file (e.g. code.json, codemeta, publiccode.yaml):
+In project metadata file (e.g. [code.json](https://github.com/DSACMS/gov-codejson), [codemeta](https://codemeta.github.io/jsonld), [publiccode.yml](https://github.com/publiccodeyml/publiccode.yml)):
 - [X] Note archival status
 - [ ] Review all fields to ensure project metadata is correct and accurate.
 

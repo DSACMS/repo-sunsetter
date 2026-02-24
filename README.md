@@ -42,21 +42,25 @@ jobs:
 ### How It Works
 
 #### Filing an issue with archival checklist
-repo-sunsetter tailors the archival process based on your repository's maturity model tier (defined in code.json):
+This functionality is located in the [actions](./actions/) directory: [actions/fetch-tier](./actions/fetch-tier) and [actions/create-issue](./actions/create-issue).
+
+#### Federal projects
+repo-sunsetter tailors the archival process based on your repository's maturity model tier defined in code.json:
 
 Tier 0-1: Lower-activity repositories receive a [basic checklist](./checklists/BASIC_ARCHIVAL_CHECKLIST.md) with essential archival tasks
 Tier 2-4: Higher-criticality repositories with active communities receive a [comprehensive checklist](./checklists/COMPREHENSIVE_ARCHIVAL_CHECKLIST.md)
 
 _For more details on repository maturity model tiers, visit [repo-scaffolder](https://dsacms.github.io/repo-scaffolder/#maturity-model-framework)._
 
+#### Non-federal projects
 This action also supports repositories that do not follow our maturity model framework - just set the `USE_MATURITY_MODEL_TIERS` parameter as `false`.
 
-This functionality is located in the [actions](./actions/) directory: [actions/fetch-tier](./actions/fetch-tier) and [actions/create-issue](./actions/create-issue).
+The `CHECKLIST_LINK` parameter can be used to set a custom archival checklist to be included in the issue body. Otherwise, a [template checklist](./checklists/TEMPLATE_ARCHIVAL_CHECKLIST.md) is provided. 
 
 #### Updating project metadata
-For projects that have a code.json file, [automated-codejson-generator](https://github.com/DSACMS/automated-codejson-generator) ARCHIVE mode is used to mark the project as archived.
+For projects that have a [code.json](https://github.com/DSACMS/gov-codejson) file, [automated-codejson-generator](https://github.com/DSACMS/automated-codejson-generator) ARCHIVE mode is used to mark the project as archived.
 
-We plan to support other metadata files such as publiccode.yml and codemeta in the future.
+We plan to support other metadata files such as [publiccode.yml](https://github.com/publiccodeyml/publiccode.yml) and [codemeta](https://codemeta.github.io/jsonld) in the future.
 
 #### Updating the repository's README.md
 The action adds an archival notice in the form of a warning banner in the repository's README.md. This text can be customized through the `ARCHIVE_NOTICE_TEXT` parameter.
