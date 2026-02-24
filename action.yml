@@ -33,6 +33,9 @@ outputs:
   archival_checklist_issue_url:
     description: "The URL of the created issue"
     value: ${{ steps.create-issue.outputs.issue_url }}
+  metadata_update_pull_request_url:
+    description: "The URL of the pull request for the metadata file update"
+    value: ${{ steps.update-metadata.outputs.pr_url }}
   readme_pull_request_number:
     description: "The pull request number for the README update"
     value: ${{ steps.update-readme.outputs.pull_request_number }}
@@ -53,6 +56,7 @@ runs:
         CHECKLIST_LINK: ${{ inputs.CHECKLIST_LINK }}
     
     - name: Update code.json using archival mode
+      id: update-metadata
       if: ${{ inputs.METADATA_FILE_TYPE == 'code.json' }}
       uses: DSACMS/automated-codejson-generator@main
       with:
@@ -71,6 +75,11 @@ runs:
     - name: Output results
       shell: bash
       run: |
-        echo "ACTION OUTPUTS:"
+        echo "🌅 Sunset Summary 🌅"
         echo "✅ Archival checklist issue created: #${{ steps.create-issue.outputs.issue_number }} - ${{ steps.create-issue.outputs.issue_url }}"
-        echo "✅ README update pull request created: #${{ steps.update-readme.outputs.readme_pull_request_number }} - ${{ steps.update-readme.outputs.readme_pull_request_url }}"
+        echo "✅ README update pull request created: #${{ steps.update-readme.outputs.pull_request_number }} - ${{ steps.update-readme.outputs.pull_request_url }}"
+        if [ -n "${{ steps.update-metadata.outputs.pr_url }}" ]; then
+          echo "✅ Metadata file update pull request created: ${{ steps.update-metadata.outputs.pr_url }}"
+        else
+          echo "ℹ️ No metadata file update pull request created."
+        fi
