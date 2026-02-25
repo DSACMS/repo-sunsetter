@@ -86,6 +86,9 @@ permissions:
   issues: write
 ```
 
+⚠️ Please make sure the following are enabled within your Repository Action Settings in order to work properly ⚠️
+![GitHub Workflow Permissions Setting](./assets/workflow_permissions_setting.png)
+
 ### Project Vision
 To streamline the end-of-life archival process in the repository life cycle by creating a GitHub Action that defines and automates archival tasks, reducing manual effort of sunsetting a repository. 
 
