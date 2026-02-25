@@ -1,4 +1,4 @@
-# repo-sunsetter
+# repo-sunsetter 🌅
 
 A GitHub Action that prepares a repository for archival by automating documentation updates and providing an archival review checklist.
 
