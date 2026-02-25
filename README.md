@@ -84,6 +84,8 @@ permissions:
 
 "All outputs are displayed in the workflow run logs under the "🌅 Sunset Summary 🌅" step."
 
+![Summary Log](./assets/summary_log.png)
+
 ### Project Vision
 To streamline the end-of-life archival process in the repository life cycle by creating a GitHub Action that defines and automates archival tasks, reducing manual effort of sunsetting a repository. 
 
