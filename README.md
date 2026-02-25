@@ -145,15 +145,15 @@ TBD
 
 This project follows [trunk-based development](https://trunkbaseddevelopment.com/), which means:
 
-* Make small changes in [short-lived feature branches](https://trunkbaseddevelopment.com/short-lived-feature-branches/) and merge to `main` frequently.
+* Make small changes in [short-lived feature branches](https://trunkbaseddevelopment.com/short-lived-feature-branches/) and merge to `dev` frequently.
 * Be open to submitting multiple small pull requests for a single ticket (i.e. reference the same ticket across multiple pull requests).
-* Treat each change you merge to `main` as immediately deployable to production. Do not merge changes that depend on subsequent changes you plan to make, even if you plan to make those changes shortly.
+* Treat each change you merge to `dev` as immediately deployable to production. Do not merge changes that depend on subsequent changes you plan to make, even if you plan to make those changes shortly.
 * Ticket any unfinished or partially finished work.
 * Tests should be written for changes introduced, and adhere to the text percentage threshold determined by the project.
 
 This project uses **continuous deployment** using [Github Actions](https://github.com/features/actions) which is configured in the [./github/workflows](.github/workflows) directory.
 
-Pull-requests are merged to `main` and the changes are immediately deployed to the development environment. Releases are created to push changes to production.
+Pull-requests are merged to `dev` and the changes are immediately deployed to the development environment. Releases are created to push changes to `main`/production.
 
 ## Contributing
 
