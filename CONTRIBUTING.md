@@ -132,7 +132,7 @@ repo-sunsetter will see regular updates and new releases. This section describes
   - [Goals](#goals)
   - [Schedule](#schedule)
   - [Communication and Workflow](#communication-and-workflow)
-  - [Beta Features](#beta-features)
+  <!-- - [Beta Features](#beta-features) -->
 - [Preparing a Release Candidate](#preparing-a-release-candidate)
   - [Incorporating feedback from review](#incorporating-feedback-from-review)
 - [Making a Release](#making-a-release)
