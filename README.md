@@ -9,7 +9,7 @@ repo-sunsetter is a comprehensive GitHub action that prepares a repository for a
 2. Update project metadata by marking project as archived in code.json
 3. Files an issue containing an [archival checklist](./checklists) based on the repository's maturity model tier. The checklist contains various tasks reviewing the contents of the repository.
 
-This project is based on our [archiving repositories guide](https://dsacms.github.io/ospo-guide/outbound/archiving-repositories/) and the [CHAOSS Practitioner Guide for Sunsetting Open Source Projects](https://chaoss.community/practitioner-guide-sunset/).
+This project is developed by the CMS.gov Open Source Program Office, based on our [archiving repositories guide](https://dsacms.github.io/ospo-guide/outbound/archiving-repositories/) and the [CHAOSS Practitioner Guide for Sunsetting Open Source Projects](https://chaoss.community/practitioner-guide-sunset/).
 
 ### Usage
 
