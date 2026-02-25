@@ -44,10 +44,7 @@ We follow the [GitHub Flow Workflow](https://guides.github.com/introduction/flow
 
 ### Testing Conventions
 
-This repository uses shell unit tests and linting for quality checks.
-
-- Unit tests are located in `tests/unit/` and use [Bats](https://github.com/bats-core/bats-core).
-- Shell script linting is done with [ShellCheck](https://www.shellcheck.net/).
+This repository uses shell unit tests for quality checks. Unit tests are located in `tests/unit/` and use [Bats](https://github.com/bats-core/bats-core).
 
 To run tests locally:
 
@@ -61,15 +58,7 @@ Pull requests should include updated or new tests for changes in shell scripts.
 
 ### Coding Style and Linters
 
-<!--- TODO: HIGHLY ENCOURAGED. Specific tools will vary between different languages/frameworks (e.g. Black for python, eslint for JavaScript, etc...)
-
-1. Mention any style guides you adhere to (e.g. pep8, etc...)
-2. Mention any linters your project uses (e.g. flake8, jslint, etc...)
-3. Mention any naming conventions your project uses (e.g. Semantic Versioning, CamelCasing, etc...)
-4. Mention any other content guidelines the project adheres to (e.g. plainlanguage.gov, etc...)
-
--->
-TBD
+This repository uses [ShellCheck](https://www.shellcheck.net/) for shell script linting linting.
 
 ### Writing Issues
 
