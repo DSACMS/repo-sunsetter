@@ -1,5 +1,6 @@
 name: repo-sunsetter
 description: "A GitHub Action to prepare a repository for archival"
+author: DSACMS
 
 inputs:
   GITHUB_TOKEN:
@@ -54,3 +55,7 @@ runs:
       with:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
         ARCHIVE_NOTICE_TEXT: ${{ inputs.ARCHIVE_NOTICE_TEXT }}
+
+branding:
+  icon: "sunset"
+  color: "yellow"
