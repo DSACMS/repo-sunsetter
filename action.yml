@@ -53,7 +53,7 @@ runs:
   
     - name: Create archival checklist issue
       id: create-issue
-      uses: DSACMS/repo-sunsetter/actions/create-issue@DSACMS/nat/outputs
+      uses: DSACMS/repo-sunsetter/actions/create-issue@main
       with:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
         USE_MATURITY_MODEL_TIERS: ${{ inputs.USE_MATURITY_MODEL_TIERS }}
@@ -71,7 +71,7 @@ runs:
     
     - name: Update README.md with archival notice
       id: update-readme
-      uses: DSACMS/repo-sunsetter/actions/update-readme@DSACMS/nat/outputs
+      uses: DSACMS/repo-sunsetter/actions/update-readme@main
       with:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
         ARCHIVE_NOTICE_TEXT: ${{ inputs.ARCHIVE_NOTICE_TEXT }}
