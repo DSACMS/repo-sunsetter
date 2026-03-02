@@ -37,7 +37,9 @@ runs:
         title: "Documentation: Add Archive Notice to README"
         body: |
           ## Description
-          This PR adds an archive notice to the README to inform users that this project is no longer actively maintained.
+          Hello, and thank you for your contributions to the Federal Open Source Community. 🙏
+
+          As part of preparing the repository for archival, this PR adds an archive notice to the README to inform users that this project is no longer actively maintained.
               
           ## Changes
           - Added archive notice banner to README.md

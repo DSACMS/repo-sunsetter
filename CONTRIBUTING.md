@@ -27,7 +27,7 @@ N/A - this project has no dependencies. Optionally, the GitHub CLI can be used t
 
 ### Building the Project
 
-N/A. Users can simply fork/clone the repo, reference the GitHub Actions in their workflows, or run the sheel scripts directly.
+N/A. Users can simply fork/clone the repo, reference the GitHub Actions in their workflows, or run the shell scripts directly.
 
 ### Workflow and Branching
 
@@ -37,9 +37,9 @@ We follow the [GitHub Flow Workflow](https://guides.github.com/introduction/flow
 2.  Check out the `main` branch
 3.  Create a feature branch
 4.  Write code and tests for your change
-5.  From your branch, make a pull request against `DSACMS/repo-sunsetter/main`
+5.  From your branch, make a pull request against `DSACMS/repo-sunsetter/dev`
 6.  Work with repo maintainers to get your change reviewed
-7.  Wait for your change to be pulled into `DSACMS/repo-sunsetter/main`
+7.  Wait for your change to be pulled into `DSACMS/repo-sunsetter/dev`
 8.  Delete your feature branch
 
 ### Testing Conventions
@@ -122,13 +122,9 @@ If the issue the pull request is addressing is particularly urgent, the pull req
 
 ## Shipping Releases
 
-<!-- TODO: What cadence does your project ship new releases? (e.g. one-time, ad-hoc, periodically, upon merge of new patches) Who does so? Below is a sample template you can use to provide this information.
-
 repo-sunsetter will see regular updates and new releases. This section describes the general guidelines around how and when a new release is cut.
 
--->
-
-<!-- ### Table of Contents
+### Table of Contents
 
 - [Versioning](#versioning)
   - [Breaking vs. non-breaking changes](#breaking-vs-non-breaking-changes)
@@ -137,14 +133,14 @@ repo-sunsetter will see regular updates and new releases. This section describes
   - [Goals](#goals)
   - [Schedule](#schedule)
   - [Communication and Workflow](#communication-and-workflow)
-  - [Beta Features](#beta-features)
+  <!-- - [Beta Features](#beta-features) -->
 - [Preparing a Release Candidate](#preparing-a-release-candidate)
   - [Incorporating feedback from review](#incorporating-feedback-from-review)
 - [Making a Release](#making-a-release)
 - [Auto Changelog](#auto-changelog)
-- [Hotfix Releases](#hotfix-releases) -->
+- [Hotfix Releases](#hotfix-releases)
 
-<!-- ### Versioning
+### Versioning
 
 repo-sunsetter uses [Semantic Versioning](https://semver.org/). Each release is associated with a [`git tag`](github.com/DSACMS/repo-sunsetter/tags) of the form `X.Y.Z`.
 
@@ -152,53 +148,53 @@ Given a version number in the `MAJOR.MINOR.PATCH` (eg., `X.Y.Z`) format, here ar
 
 - **MAJOR** version - make breaking/incompatible API changes
 - **MINOR** version - add functionality in a backwards compatible manner
-- **PATCH** version - make backwards compatible bug fixes -->
+- **PATCH** version - make backwards compatible bug fixes
 
-<!-- ### Breaking vs. non-breaking changes
+### Breaking vs. non-breaking changes
 
-TODO: Examples and protocol for breaking changes
+Breaking changes for repo-sunsetter include modifications that affect how the action is consumed in workflows, such as:
+- Renaming or removing action inputs or outputs
+- Changing default behaviors that would alter existing workflows
+- Modifying the structure or format of generated content (issues, PRs, README notices) that downstream automation may depend on
 
-Definitions for breaking changes will vary depending on the use-case and project but generally speaking if changes break standard workflows in any way then they should be put in a major version update.
--->
+Non-breaking changes include bug fixes, new optional features, documentation updates, and internal refactoring that doesn't affect the action's interface.
 
-<!-- #### Ongoing version support
+#### Ongoing version support
 
-TODO: Explanation of general thought process
+The following versions of the project are actively supported:
+- v1.0.0
 
-Explain the project’s thought process behind what versions will and won’t be supported in the future.
--->
+### Release Process
 
-<!-- TODO: List of supported releases
+The sections below define the release process itself, including timeline, roles, and communication best practices.
 
-This section should make clear which versions of the project are considered actively supported.
--->
+#### Goals
 
-<!-- ### Release Process
+Our release structure aims to deliver value to users through:
 
-The sections below define the release process itself, including timeline, roles, and communication best practices. -->
+- Ensuring the action consistently performs repository archival tasks
+- Delivering new features and functionality based on our product roadmap
+- Providing bug fixes
+- Keeping documentation up-to-date with new features
+- Incorporating feedback and contributions from external collaborators
+- Addressing vulnerabilities through hotfix releases when necessary
 
-<!-- #### Goals
+#### Schedule
 
-TODO: Explain the goals of your project’s release structure
+We follow a feature-based release schedule where new versions are released upon completion of features on the project roadmap rather than on a fixed time-based cadence. This approach ensures that each release delivers meaningful functionality and has been properly tested.
 
-This should ideally be a bulleted list of what your regular releases will deliver to key users and stakeholders
--->
+Release timing will depend on:
+- Completion and testing of roadmap features
+- Community feedback and prioritization
+- Complexity and scope of changes
 
-<!-- #### Schedule
+For special cases such as security updates or critical bugfixes, hotfix releases will be made immediately as needed, independent of the feature release schedule.
 
-TODO: Communicate the timing of the regular release structure
+#### Communication and Workflow
 
-For example, if you plan on creating regular releases on a weekly basis you should communicate that as well as the typical days upcoming releases will become tagged.
-
-You should also communicate special cases such as security updates or critical bugfixes and how they would likely be released earlier than what is usually scheduled.
--->
-
-<!-- #### Communication and Workflow
-
-TODO: Communicate proper channels to be notified about releases
-
-Communicate the slack channels, mailing lists, or other means of pushing out release notifications.
--->
+We will notify users about new releases through the following channels:
+- #cms-ospo slack channel for agency communications
+- #wg-ospo CHAOSS slack channel for the greater OSPO community
 
 <!-- TODO: (OPTIONAL) Support beta feature testing
 ## Beta Features
@@ -208,7 +204,7 @@ When a new beta feature is created for a release, make sure to create a new Issu
 Once an item is moved out of beta, close its Issue and change the text to say 'Beta feature: No (as of X.X.x)'.
 -->
 
-<!-- ### Preparing a Release Candidate
+### Preparing a Release Candidate
 
 The following steps outline the process to prepare a Release Candidate of repo-sunsetter. This process makes public the intention and contents of an upcoming release, while allowing work on the next release to continue as usual in `dev`.
 
@@ -232,7 +228,7 @@ The following steps outline the process to prepare a Release Candidate of repo-s
    git push --tags
    ```
 
-3. Publish a [pre-Release in GitHub](proj-releases-new):
+3. Publish a [pre-Release in GitHub](https://github.com/DSACMS/repo-sunsetter/releases/new):
 
    ```md
    Tag version: [tag you just pushed]
@@ -244,13 +240,13 @@ The following steps outline the process to prepare a Release Candidate of repo-s
 
 4. Open a Pull Request to `main` from the release branch (eg. `0.5.0-rc1`). This pull request is where review comments and feedback will be collected.
 
-5. Conduct Review of the Pull Request that was opened. -->
+5. Conduct Review of the Pull Request that was opened.
 
-<!-- #### Incorporating feedback from review
+#### Incorporating feedback from review
 
 The review process may result in changes being necessary to the release candidate.
 
-For example, if the second Release Candidate for `0.5.0` is being prepared, after committing necessary changes, create a tag on the tip of the release branch like `0.5.0-rc2` and make a new [GitHub pre-Release](proj-releases-new) from there:
+For example, if the second Release Candidate for `0.5.0` is being prepared, after committing necessary changes, create a tag on the tip of the release branch like `0.5.0-rc2` and make a new [GitHub pre-Release](https://github.com/DSACMS/repo-sunsetter/releases/new) from there:
 
 ```bash
 git fetch
@@ -260,9 +256,9 @@ git tag 0.5.0-rc2
 git push --tags
 ```
 
-Repeat as-needed for subsequent Release Candidates. Note the release branch will be pushed to `dev` at key points in the approval process to ensure the community is working with the latest code. -->
+Repeat as-needed for subsequent Release Candidates. Note the release branch will be pushed to `dev` at key points in the approval process to ensure the community is working with the latest code.
 
-<!-- ### Making a Release
+### Making a Release
 
 The following steps describe how to make an approved [Release Candidate](#preparing-a-release-candidate) an official release of repo-sunsetter:
 
@@ -272,7 +268,7 @@ The following steps describe how to make an approved [Release Candidate](#prepar
 
 3. **Dev**. Open a Pull Request from the release branch to `dev`. Merge this PR to ensure any changes to the Release Candidate during the review process make their way back into `dev`.
 
-4. **Release**. Publish a [Release in GitHub](proj-releases-new) with the following information
+4. **Release**. Publish a [Release in GitHub](https://github.com/DSACMS/repo-sunsetter/releases/new) with the following information
 
    - Tag version: [X.Y.Z] (note this will create the tag for the `main` branch code when you publish the release)
    - Target: main
@@ -280,37 +276,13 @@ The following steps describe how to make an approved [Release Candidate](#prepar
    - Description: copy in Release Notes created earlier
    - This is a pre-release: DO NOT check
 
-5. **Branch**. Finally, keep the release branch and don't delete it. This allows easy access to a browsable spec. -->
+5. **Branch**. Finally, keep the release branch and don't delete it. This allows easy access to a browsable spec.
 
-<!-- ### Auto Changelog
+### Auto Changelog
 
-It is recommended to use the provided auto changelog github workflow to populate the project’s CHANGELOG.md file:
+The [auto-changelog.yml](./.github/workflows/auto-changelog.yml) workflow will be used to update CHANGELOG.md. This provided workflow will be triggered when a new release is created, automatically populate the CHANGELOG.md with all of the associated changes created since the last release that are included in the current release.
 
-```yml
-name: Changelog
-on:
-  release:
-    types:
-      - created
-jobs:
-  changelog:
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Auto Generate changelog"
-        uses: heinrichreimer/action-github-changelog-generator@v2.3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-```
-
-This provided workflow will automatically populate the CHANGELOG.md with all of the associated changes created since the last release that are included in the current release.
-
-This workflow will be triggered when a new release is created.
-
-If you do not wish to use automatic changelogs, you can delete the workflow and update the CHANGELOG.md file manually. Although, this is not recommended.
-
-For best practices on writing changelogs, see: https://keepachangelog.com/en/1.1.0/#how -->
-
-<!-- ### Hotfix Releases
+### Hotfix Releases
 
 In rare cases, a hotfix for a prior release may be required out-of-phase with the normal release cycle. For example, if a critical bug is discovered in the `0.3.x` line after `0.4.0` has already been released.
 
@@ -334,7 +306,7 @@ In rare cases, a hotfix for a prior release may be required out-of-phase with th
    git push --tags
    ```
 
-4. Create a [GitHub Release](proj-releases-new) from this tag and the support branch. For example if `0.3.3` is the new hotfix version:
+4. Create a [GitHub Release](https://github.com/DSACMS/repo-sunsetter/releases/new) from this tag and the support branch. For example if `0.3.3` is the new hotfix version:
 
    ```md
    Tag version: 0.3.3
@@ -343,9 +315,6 @@ In rare cases, a hotfix for a prior release may be required out-of-phase with th
    Description: [copy in ReleaseNotes created earlier]
    This is a pre-release: DO NOT check
    ```
-
-[proj-releases-new]: https://github.com/DSACMS/repo-sunsetter/releases/new
--->
 
 ## Documentation
 
