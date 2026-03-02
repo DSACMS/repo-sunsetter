@@ -139,7 +139,10 @@ Since this project consists of shell scripts and GitHub Actions, there is no bui
 
 ## Coding Style and Linters
 
-TBD
+This repository uses shell unit tests and linting for quality checks.
+
+- Unit tests are located in `tests/unit/` and use [Bats](https://github.com/bats-core/bats-core).
+- Shell script linting is done with [ShellCheck](https://www.shellcheck.net/).
 
 ## Branching Model
 
