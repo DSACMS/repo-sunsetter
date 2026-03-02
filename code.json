@@ -19,10 +19,15 @@
   "repositoryURL": "https://github.com/DSACMS/repo-sunsetter",
   "repositoryHost": "github.com/DSACMS",
   "repositoryVisibility": "public",
+  "homepageURL": "",
+  "downloadURL": "",
+  "disclaimerURL": "",
+  "disclaimerText": "",
   "vcs": "git",
-  "laborHours": 3500,
+  "laborHours": 3130,
   "reuseFrequency": {
-    "forks": 1
+    "forks": 1,
+    "clones": 0
   },
   "platforms": [
     "web"
@@ -42,10 +47,13 @@
     "0"
   ],
   "SBOM": "https://github.com/DSACMS/repo-sunsetter/network/dependencies",
+  "relatedCode": [],
+  "reusedCode": [],
+  "partners": [],
   "date": {
     "created": "2026-01-13T20:59:18Z",
-    "lastModified": "2026-02-23T19:41:47Z",
-    "metadataLastUpdated": "2026-02-25T22:46:38.479Z"
+    "lastModified": "2026-03-02T21:44:44Z",
+    "metadataLastUpdated": "2026-03-02T21:51:26.346Z"
   },
   "tags": [
     "dsacms-tier3"
