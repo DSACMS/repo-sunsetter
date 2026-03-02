@@ -44,16 +44,16 @@ jobs:
 #### Filing an issue with archival checklist
 This functionality is located in the [actions](./actions/) directory: [actions/fetch-tier](./actions/fetch-tier) and [actions/create-issue](./actions/create-issue).
 
-**Federal projects**
+_Federal projects_
 
 repo-sunsetter tailors the archival process based on your repository's maturity model tier defined in code.json:
 
 Tier 0-1: Lower-activity repositories receive a [basic checklist](./checklists/BASIC_ARCHIVAL_CHECKLIST.md) with essential archival tasks
 Tier 2-4: Higher-criticality repositories with active communities receive a [comprehensive checklist](./checklists/COMPREHENSIVE_ARCHIVAL_CHECKLIST.md)
 
-_For more details on repository maturity model tiers, visit [repo-scaffolder](https://dsacms.github.io/repo-scaffolder/#maturity-model-framework)._
+For more details on repository maturity model tiers, visit [repo-scaffolder](https://dsacms.github.io/repo-scaffolder/#maturity-model-framework).
 
-**Non-federal projects**
+_Non-federal projects_
 
 This action also supports repositories that do not follow our maturity model framework - just set the `USE_MATURITY_MODEL_TIERS` parameter as `false`.
 
@@ -130,7 +130,10 @@ A list of core team members responsible for the code and documentation in this r
 │   └── update-readme/                  # Adds archival notice to README
 ├── checklists/                         # Archival task checklists
 │   ├── BASIC_ARCHIVAL_CHECKLIST.md     # Tier 0-1 repositories
-│   └── COMPREHENSIVE_ARCHIVAL_CHECKLIST.md  # Tier 2-4 repositories
+│   ├── COMPREHENSIVE_ARCHIVAL_CHECKLIST.md  # Tier 2-4 repositories
+│   └── TEMPLATE_ARCHIVAL_CHECKLIST.md  # Other non-CMS repositories
+├── tests/                              # Contains tests
+├── assets/                             # Contains assets
 </pre>
 
 Visit the [checklists/](./checklists/) directory to view the archival checklists.
