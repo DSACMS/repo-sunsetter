@@ -9,6 +9,14 @@ inputs:
   ARCHIVE_NOTICE_TEXT:
     description: "Custom text to include in the archival notice (optional)"
     required: false
+
+outputs:
+  pull_request_number:
+    description: "The pull request number"
+    value: ${{ steps.create-readme-pr.outputs.pull-request-number }}
+  pull_request_url:
+    description: "The URL of the pull request"
+    value: ${{ steps.create-readme-pr.outputs.pull-request-url }}
     
 runs:
   using: 'composite'
@@ -21,6 +29,7 @@ runs:
         ARCHIVE_NOTICE_TEXT: ${{ inputs.ARCHIVE_NOTICE_TEXT }}
 
     - name: Create Pull Request
+      id: create-readme-pr
       uses: peter-evans/create-pull-request@v7
       with:
         token: ${{ inputs.GITHUB_TOKEN }} #ENV instead?
@@ -36,3 +45,9 @@ runs:
         labels: archive
         commit-message: "docs: add archive notice to README"
         author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+    
+    - name: Output results
+      shell: bash
+      run: |
+        echo "✅ Archive notice to README has been added successfully! See PR below:"
+        echo "PR #${{ steps.create-readme-pr.outputs.pull-request-number }} - ${{ steps.create-readme-pr.outputs.pull-request-url }}"

@@ -26,11 +26,31 @@ inputs:
     required: false
     default: "This project is now archived and no longer actively maintained. It has been archived to retain its contents for reference. Feel free to explore and fork the repository, but please note that updates or support will not be provided."
 
+outputs:
+  archival_checklist_issue_number:
+    description: "The created issue number"
+    value: ${{ steps.create-issue.outputs.issue_number }}
+
+  archival_checklist_issue_url:
+    description: "The URL of the created issue"
+    value: ${{ steps.create-issue.outputs.issue_url }}
+
+  metadata_update_pull_request_url:
+    description: "The URL of the pull request for the metadata file update"
+    value: ${{ steps.update-metadata.outputs.pr_url }}
+
+  readme_pull_request_number:
+    description: "The pull request number for the README update"
+    value: ${{ steps.update-readme.outputs.pull_request_number }}
+    
+  readme_pull_request_url:
+    description: "The URL of the pull request for the README update"
+    value: ${{ steps.update-readme.outputs.pull_request_url }}
 
 runs:
   using: "composite"
   steps:
-    
+  
     - name: Create archival checklist issue
       id: create-issue
       uses: DSACMS/repo-sunsetter/actions/create-issue@main
@@ -40,6 +60,7 @@ runs:
         CHECKLIST_LINK: ${{ inputs.CHECKLIST_LINK }}
     
     - name: Update code.json using archival mode
+      id: update-metadata
       if: ${{ inputs.METADATA_FILE_TYPE == 'code.json' }}
       uses: DSACMS/automated-codejson-generator@main
       with:
@@ -54,3 +75,15 @@ runs:
       with:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
         ARCHIVE_NOTICE_TEXT: ${{ inputs.ARCHIVE_NOTICE_TEXT }}
+    
+    - name: Output results
+      shell: bash
+      run: |
+        echo "🌅 Sunset Summary 🌅"
+        echo "✅ Archival checklist issue created: #${{ steps.create-issue.outputs.issue_number }} - ${{ steps.create-issue.outputs.issue_url }}"
+        echo "✅ README update pull request created: #${{ steps.update-readme.outputs.pull_request_number }} - ${{ steps.update-readme.outputs.pull_request_url }}"
+        if [ -n "${{ steps.update-metadata.outputs.pr_url }}" ]; then
+          echo "✅ Metadata file update pull request created: ${{ steps.update-metadata.outputs.pr_url }}"
+        else
+          echo "ℹ️ No metadata file update pull request created."
+        fi
