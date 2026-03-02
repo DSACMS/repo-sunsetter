@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Get tier from environment variable
-TIER="${TIER}"
-
 echo "🔍 Downloading checklist for tier: $TIER"
 echo "Test test test ${1}"
 

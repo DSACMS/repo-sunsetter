@@ -89,6 +89,19 @@ permissions:
 ⚠️ Please make sure the following are enabled within your Repository Action Settings in order to work properly ⚠️
 ![GitHub Workflow Permissions Setting](./assets/workflow_permissions_setting.png)
 
+### Outputs
+| Name | Description |
+| --- | --- |
+| `archival_checklist_issue_number` | The created issue number |
+| `archival_checklist_issue_url` | The URL of the created issue |
+| `metadata_update_pull_request_url` | The URL of the pull request for the metadata file update, only available if uses [automated-codejson-generator](https://github.com/DSACMS/automated-codejson-generator) to update code.json |
+| `readme_pull_request_number` | The pull request number for the README update |
+| `readme_pull_request_url` | The URL of the pull request for the README update |
+
+"All outputs are displayed in the workflow run logs under the "🌅 Sunset Summary 🌅" step."
+
+![Summary Log](./assets/summary_log.png)
+
 ### Project Vision
 To streamline the end-of-life archival process in the repository life cycle by creating a GitHub Action that defines and automates archival tasks, reducing manual effort of sunsetting a repository. 
 
@@ -142,7 +155,10 @@ Since this project consists of shell scripts and GitHub Actions, there is no bui
 
 ## Coding Style and Linters
 
-TBD
+This repository uses shell unit tests and linting for quality checks.
+
+- Unit tests are located in `tests/unit/` and use [Bats](https://github.com/bats-core/bats-core).
+- Shell script linting is done with [ShellCheck](https://www.shellcheck.net/).
 
 ## Branching Model
 
