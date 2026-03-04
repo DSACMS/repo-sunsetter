@@ -12,8 +12,7 @@
       }
     ],
     "usageType": [
-      "openSource",
-      "featured"
+      "openSource"
     ]
   },
   "organization": "Centers for Medicare & Medicaid Services",
@@ -57,7 +56,8 @@
     "metadataLastUpdated": "2026-03-02T21:51:26.346Z"
   },
   "tags": [
-    "dsacms-tier3"
+    "dsacms-tier3",
+    "featured"
   ],
   "contact": {
     "email": "opensource@cms.hhs.gov",
