@@ -1,4 +1,6 @@
 # repo-sunsetter 🌅
+[![Tests](https://github.com/DSACMS/repo-sunsetter/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/DSACMS/repo-sunsetter/actions/workflows/tests.yml)
+[![Release](https://img.shields.io/github/v/release/DSACMS/repo-sunsetter)](https://github.com/DSACMS/repo-sunsetter/releases)
 
 A GitHub Action that prepares a repository for archival by automating documentation updates and providing an archival review checklist.
 
