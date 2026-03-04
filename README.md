@@ -36,7 +36,7 @@ jobs:
           fetch-depth: 0
       - name: Run repo-sunsetter
         id: archive
-        uses: DSACMS/repo-sunsetter@main
+        uses: DSACMS/repo-sunsetter@v1.0.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
