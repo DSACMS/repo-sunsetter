@@ -24,7 +24,7 @@
   "disclaimerURL": "",
   "disclaimerText": "",
   "vcs": "git",
-  "laborHours": 3130,
+  "laborHours": 3154,
   "reuseFrequency": {
     "forks": 1,
     "clones": 0
@@ -52,12 +52,22 @@
   "partners": [],
   "date": {
     "created": "2026-01-13T20:59:18Z",
-    "lastModified": "2026-03-02T21:44:44Z",
-    "metadataLastUpdated": "2026-03-02T21:51:26.346Z"
+    "lastModified": "2026-03-27T17:10:00Z",
+    "metadataLastUpdated": "2026-05-01T02:33:53.953Z"
   },
   "tags": [
+    "archive",
+    "codejson",
     "dsacms-tier3",
-    "featured"
+    "eol",
+    "github-actions",
+    "ospos",
+    "repository-management",
+    "shell-scripts",
+    "sunset",
+    "sunset-archive",
+    "featured",
+    "end-of-life"
   ],
   "contact": {
     "email": "opensource@cms.hhs.gov",
