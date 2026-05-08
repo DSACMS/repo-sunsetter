@@ -65,7 +65,8 @@
     "repository-management",
     "shell-scripts",
     "sunset",
-    "sunset-archive"
+    "sunset-archive",
+    "featured"
   ],
   "contact": {
     "email": "opensource@cms.hhs.gov",
