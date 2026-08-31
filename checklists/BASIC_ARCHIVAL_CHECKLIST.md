@@ -49,4 +49,5 @@ In **code.json**:
 **Note:** Once all items are checked off, the repository is ready for archival.
 
 _For Repository Owners:_
-To archive the repository, go to the Repository Settings tab, scroll down to `Danger Zone` and click on `Archive this repository` button.
+- [ ] Close this issue
+- [ ] Archive the repository. Go to the Repository Settings tab, scroll down to `Danger Zone` and click on `Archive this repository` button.
