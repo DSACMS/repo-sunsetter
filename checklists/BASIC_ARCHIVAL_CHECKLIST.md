@@ -7,6 +7,12 @@ labels: archive
 
 Use this checklist to ensure all necessary tasks are completed before archiving your repository.
 
+## Repository Access
+_For Repository Owners_
+- [ ] Grant maintainer permissions to checklist assignee
+- [ ] Review and audit committer access permissions
+- [ ] Remove access for users who no longer need it
+
 ## Repository Metadata
 In **code.json**:
 - [X] Change status to archival
@@ -38,6 +44,10 @@ In **code.json**:
 - [ ] Delete all inactive branches
 - [ ] Remove any unnecessary files or artifacts
 
----
+## Archival
+_For Repository Owners_
 
-**Note:** Once all items are checked off, the repository is ready for archival.
+After all checklist items are complete:
+
+- [ ] Close this checklist issue
+- [ ] Archive the repository in **Settings → Danger Zone → Archive this repository**
