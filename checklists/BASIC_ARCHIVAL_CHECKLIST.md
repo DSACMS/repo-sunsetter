@@ -44,10 +44,10 @@ In **code.json**:
 - [ ] Delete all inactive branches
 - [ ] Remove any unnecessary files or artifacts
 
----
+## Archival
+_For Repository Owners_
 
-**Note:** Once all items are checked off, the repository is ready for archival.
+After all checklist items are complete:
 
-_For Repository Owners:_
-- [ ] Close this issue
-- [ ] Archive the repository. Go to the Repository Settings tab, scroll down to `Danger Zone` and click on `Archive this repository` button.
+- [ ] Close this checklist issue
+- [ ] Archive the repository in **Settings → Danger Zone → Archive this repository**
