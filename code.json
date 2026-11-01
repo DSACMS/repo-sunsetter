@@ -13,7 +13,8 @@
     ],
     "usageType": [
       "openSource"
-    ]
+    ],
+    "exemptionText": ""
   },
   "organization": "Centers for Medicare & Medicaid Services",
   "repositoryURL": "https://github.com/DSACMS/repo-sunsetter",
@@ -24,7 +25,7 @@
   "disclaimerURL": "",
   "disclaimerText": "",
   "vcs": "git",
-  "laborHours": 3154,
+  "laborHours": 3177,
   "reuseFrequency": {
     "forks": 1,
     "clones": 0
@@ -52,8 +53,8 @@
   "partners": [],
   "date": {
     "created": "2026-01-13T20:59:18Z",
-    "lastModified": "2026-03-27T17:10:00Z",
-    "metadataLastUpdated": "2026-05-01T02:33:53.953Z"
+    "lastModified": "2026-09-03T20:03:57Z",
+    "metadataLastUpdated": "2026-11-01T03:49:21.183Z"
   },
   "tags": [
     "archive",
